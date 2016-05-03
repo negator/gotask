@@ -25,6 +25,10 @@ type GoTask struct {
 	wg *sync.WaitGroup
 }
 
+func (t *GoTask) Await() {
+	t.wg.Wait()
+}
+
 func task(f func()) *GoTask {
 	var wg sync.WaitGroup
 	wg.Add(1)
